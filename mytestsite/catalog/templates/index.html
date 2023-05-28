@@ -1,0 +1,16 @@
+{% extends "base_generic.html"%}
+{% block content %}
+<h1>Games list</h1>
+
+    <p>Welcome to Games list page</p>
+
+    <h2>Dynamic content</h2>
+
+    <p>The list has the following games</p>
+    <ul>
+        <li><strong>Games:</strong>{{ num_games }}</li>
+        <li><strong>Companys:</strong>{{ num_companys }}</li>
+        <li><strong>Genres:</strong>{{ num_genres }}</li>
+    </ul>
+
+{% endblock %}

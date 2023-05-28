@@ -21,6 +21,7 @@ class Games(models.Model):
     def get_absolute_url(self):
         return reverse('game-detail', args=[str(self.id)])
     
+    
 
 
 class Companys(models.Model):
@@ -28,7 +29,7 @@ class Companys(models.Model):
     short_desc = models.CharField(max_length=500)
 
     def get_absolute_url(self):
-        return reverse('Company-detail', args=[str(self.id)])
+        return reverse('company-detail', args=[str(self.id)])
      
     def __str__(self):
         return self.name

@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+ 
+    <h1>Title: {{ games.game_name }}</h1>
+    <p><strong>Company: </strong><a href="{{ games.company_name.get_absolute_url }}">{{games.company_name}}</a></p>
+    <p><strong>Genre: </strong>{% for genre in games.genre.all %} {{genre}}{% if not forloop.last %}, {% endif %} {% endfor %}</p>
+
+
+{% endblock %}
