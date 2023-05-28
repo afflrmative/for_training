@@ -2,6 +2,7 @@ from django.http import Http404
 from django.shortcuts import render
 from .models import *
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def index(request):
     num_games = Games.objects.all().count()
@@ -53,3 +54,13 @@ class CompanyDetailView(generic.DetailView):
             request,
             'catalog/companys_detail.html',
             context={'company':company_id})
+    
+
+class AddedGamesByUserListView(LoginRequiredMixin,generic.ListView):
+    model = GameLibrarys
+    template_name ='catalog/game_list_borrowed_user.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return GameLibrarys.objects.filter(borrower=self.request.user).order_by('time_add')
+    

@@ -20,3 +20,12 @@ class GenreAdmin(admin.ModelAdmin):
 @admin.register(Games)
 class GamesAdmin(admin.ModelAdmin):
     list_display = ('game_name', 'description', 'company_name')
+
+@admin.register(GameLibrarys)
+class GameLibraryAdmin(admin.ModelAdmin):
+    list_display = ('game_list', 'borrower', 'time_add', 'id')
+    list_filter = ('time_add',)
+    fieldsets = (
+        (None, {'fields': ('game_list', 'id')}),
+        ('Availability', {'fields': ('time_add', 'borrower')}),
+    )

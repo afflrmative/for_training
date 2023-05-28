@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+    <h1>List of added games</h1>
+
+    {% if game_librarys_list %}
+    <ul>
+        {% for game_library in game_librarys_list %}
+            <li><a href="{% url 'game-detail' game_library.game_list.pk %}">{{ game_library.game_list.game_name }}</a> ({{ game_library.time_add }})</li>
+        {% endfor %}
+    </ul>
+
+    {% else %}
+        <p>There are no games added</p>
+    {% endif %}
+
+{% endblock %}
