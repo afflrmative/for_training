@@ -7,11 +7,15 @@ def index(request):
     num_games = Games.objects.all().count()
     num_companys = Companys.objects.all().count()
     num_genres = Genre.objects.all().count()
+    
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits+1
+ 
 
     return render(
         request,
         'index.html',
-        context= {'num_games':num_games, 'num_companys':num_companys, 'num_genres':num_genres}
+        context= {'num_games':num_games, 'num_companys':num_companys, 'num_genres':num_genres, 'num_visits': num_visits}
 
     )
 
